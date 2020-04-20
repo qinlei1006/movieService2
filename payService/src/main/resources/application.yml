@@ -1,0 +1,38 @@
+#服务器的端口号
+server:
+  port: 9003
+eureka:
+  instance:
+    hostname: 127.0.0.1  #服务器的IP地址
+  client:
+    serviceUrl:    #注册服务器的地址
+      defaultZone: http://127.0.0.1:8000/eureka/
+spring:
+  application:
+    name: payService
+  datasource:
+    url: jdbc:mysql://localhost:3306/movie?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 080120qw
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+        ddl-auto: update
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        database-platform: org.hibernate.dialect.MySQL5Dialect
+
+#mq
+  rabbitmq:
+   host: 127.0.0.1
+   port: 5672
+   username: guest
+   password: guest
+
+  publisher-confirms: true
+  publisher-returns: true
+  virtual-host: /
+  listener:
+    simple:
+     acknowledge-mode: manual
